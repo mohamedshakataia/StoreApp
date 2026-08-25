@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:storeapp/helper/api.dart';
 import 'package:storeapp/model/proudect_model.dart';
 
@@ -12,6 +10,7 @@ class AllProuducts {
     for (int i = 0; i < data.length; i++) {
       listproduct.add(ProudectModel.fromjson(data[i]));
     }
+    print(listproduct);
     return listproduct;
   }
 }

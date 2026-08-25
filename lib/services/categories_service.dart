@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:http/http.dart' as http;
 import 'package:storeapp/helper/api.dart';
 import 'package:storeapp/model/proudect_model.dart';
 
