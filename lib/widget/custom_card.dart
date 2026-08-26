@@ -13,7 +13,7 @@ class CustomCard extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, UpdateProduct.id);
+            Navigator.pushNamed(context, UpdateProduct.id, arguments: product);
           },
           child: Container(
             decoration: BoxDecoration(
