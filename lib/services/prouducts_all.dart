@@ -10,7 +10,6 @@ class AllProuducts {
     for (int i = 0; i < data.length; i++) {
       listproduct.add(ProudectModel.fromjson(data[i]));
     }
-    print(listproduct);
     return listproduct;
   }
 }
