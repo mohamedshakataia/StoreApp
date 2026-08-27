@@ -7,16 +7,19 @@ class CustomField extends StatelessWidget {
     this.onchanged,
     this.obscureText = false,
     this.inputType,
+    this.initialfield,
   });
   Function(String)? onchanged;
   final String hint;
   bool? obscureText;
   TextInputType? inputType;
+  String? initialfield;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: TextField(
+      child: TextFormField(
+        initialValue: initialfield,
         keyboardType: inputType,
         obscureText: obscureText!,
         onChanged: onchanged,

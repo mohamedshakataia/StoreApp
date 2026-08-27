@@ -36,6 +36,10 @@ class RatingModel {
   RatingModel({required this.rate, required this.count});
 
   factory RatingModel.fromjson(jsonData) {
-    return RatingModel(rate: jsonData['rate'], count: jsonData['count']);
+    if (jsonData['rate'] != null) {
+      return RatingModel(rate: jsonData['rate'], count: jsonData['count']);
+    } else {
+      return RatingModel(rate: 0, count: 0);
+    }
   }
 }

@@ -39,6 +39,7 @@ class _UpdateProductState extends State<UpdateProduct> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomField(
+                initialfield: product.title,
                 hint: 'title',
                 onchanged: (data) {
                   title = data;
@@ -46,6 +47,7 @@ class _UpdateProductState extends State<UpdateProduct> {
               ),
               SizedBox(height: 15),
               CustomField(
+                initialfield: product.price.toString(),
                 inputType: TextInputType.number,
                 hint: 'price',
                 onchanged: (data) {
@@ -54,6 +56,7 @@ class _UpdateProductState extends State<UpdateProduct> {
               ),
               SizedBox(height: 15),
               CustomField(
+                initialfield: product.description,
                 hint: 'description',
                 onchanged: (data) {
                   description = data;
@@ -61,6 +64,7 @@ class _UpdateProductState extends State<UpdateProduct> {
               ),
               SizedBox(height: 15),
               CustomField(
+                initialfield: product.image,
                 hint: 'image',
                 onchanged: (data) {
                   image = data;
@@ -68,6 +72,7 @@ class _UpdateProductState extends State<UpdateProduct> {
               ),
               SizedBox(height: 15),
               CustomField(
+                initialfield: product.category,
                 hint: 'category',
                 onchanged: (data) {
                   category = data;
@@ -75,13 +80,14 @@ class _UpdateProductState extends State<UpdateProduct> {
               ),
               SizedBox(height: 15),
               CustomButton(
-                ontap: () {
+                ontap: () async {
                   isloading = true;
                   setState(() {});
                   try {
-                    update(product);
+                    await update(product);
                     print('success');
                   } catch (e) {
+                    print(e.toString());
                     isloading = false;
                     setState(() {});
                   }
@@ -95,13 +101,14 @@ class _UpdateProductState extends State<UpdateProduct> {
     );
   }
 
-  void update(ProudectModel product) {
-    UpdateProductget().updateProduct(
-      title: product.title,
-      price: product.price,
-      description: product.description,
-      image: product.image,
-      category: product.category,
+  Future<void> update(ProudectModel product) async {
+    await UpdateProductget().updateProduct(
+      id: product.id,
+      title: title ?? product.title,
+      price: price ?? product.price,
+      description: description ?? product.description,
+      image: image ?? product.image,
+      category: category ?? product.category,
     );
   }
 }
